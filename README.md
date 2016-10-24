@@ -3,7 +3,7 @@ This is a re-upload of a collaboration project done for [CodeLinc v3 (2016)] (ht
 [Link to original repository](https://github.com/jlstack/codelinc_ja)
 
 ![Opening page of the web project.](http://i.imgur.com/Swe31Vu.png)
-*Opening picture of homepage layout. Left: link to Junior Achievement website volunteer form. Right: Assortment of most recently uploaded images in a collage format, leading to the image gallery. *
+*Opening picture of homepage layout. Left: link to Junior Achievement website volunteer form. Right: Assortment of most recently uploaded images in a collage format, leading to the image gallery.*
 
 <h2>Inspiration</h2>
 
@@ -17,7 +17,7 @@ This is a re-upload of a collaboration project done for [CodeLinc v3 (2016)] (ht
 <p>Functions as a social network for demonstrating the experience of volunteering. Bringing a reality to those who have little experience but want more. The badge system and work log format should even promote current volunteers to continue volunteering for increased incentives: verified proof of constant dedication to a great cause.</p>
 
 ![User Profile image](http://i.imgur.com/GZaq6VA.png)
-*Image of user profile page. Features information about the hours logged of users, after verification from JA Administration. Displays badges earned and a cumulative number of hours volunteered *
+*Image of user profile page. Features information about the hours logged of users, after verification from JA Administration. Displays badges earned and a cumulative number of hours volunteered.*
 
 <h2>How we built it</h2>
 
