@@ -1,0 +1,122 @@
+body {
+  font-family: "Open Sans";
+}
+
+#avatar {
+  height: 2em;
+}
+
+#nav-container {
+  background-color: #d59844;
+  height: 85px;
+}
+
+.navbar-header {
+  height: 85px;
+}
+
+#featured-volunteer {
+  width: 100%;
+  max-height: 100%;
+}
+
+.jumbotron {
+  padding-top: 100px;
+  padding-bottom: 4px;
+  margin-top: -30px;
+  text-align: center;
+  width: 100%;
+}
+
+/*flexbox help from
+  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+  codepin is MIT :)
+*/
+#dashboard {
+  padding: 0;
+  margin: 0;
+  margin-top: -30px;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+
+}
+
+#dashboard li {
+  background: #008751;
+  opacity: .75;
+  padding: 5px;
+  width: calc(100% * (1/2) - 10px);
+  height: 15em;
+  margin-top: 10px;
+
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+#footer {
+  margin-top: 10px;
+  width: 100%;
+  height: 13em;
+  background-color: #d59844;
+  text-align: center;
+}
+#vol-message {
+  color: white;
+  position: absolute;
+  font-size: 6em;
+}
+
+#bs-example-navbar-collapse-1 {
+  background-color: #d59844;
+}
+
+p {
+  margin: 0px;
+}
+
+.row {
+  margin: 0px;
+}
+
+.icon {
+  font-size: 3em;
+}
+
+a {
+  color: #008751;
+}
+
+#social-icons {
+  margin-top: 3em;
+}
+
+#volunteer-square {
+  padding-bottom: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+
+#gal-message {
+  color: black;
+  position: absolute;
+  font-size: 6em;
+  text-align: center;
+  top: 140px;
+  left: 70px;
+  background-color: white;
+  border: solid 1px black;
+  color: #d59844;
+}

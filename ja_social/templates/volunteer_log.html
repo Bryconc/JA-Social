@@ -1,0 +1,39 @@
+{% extends 'base_html.html' %}
+
+{% load static %}
+
+{% block title %}
+Volunteer Hour Log
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'ja_social/css/hour-form-style.css'%}">
+{% endblock %}
+
+{% block content %}
+
+<div id="hours-form" class="row text-center">
+    <h2>Enter Volunteer Hours:</h2>
+    <div class="col-sm-2 col-sm-offset-5 text-center">
+        <form action="" method="post">
+        {% csrf_token %}
+            <table>
+                {% for field in form %}
+                <tr>
+                    <td>
+                        {{ field.label_tag }}
+                    </td>
+                    <td>
+                        {{ field }}
+                    </td>
+                    <td class="error_msg">
+                        {{field.errors}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <input type="submit" value="Log">
+        </form>
+    </div>
+</div>
+{% endblock %}

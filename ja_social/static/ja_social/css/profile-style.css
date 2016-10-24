@@ -1,0 +1,69 @@
+#avatar {
+  height: 2em;
+}
+
+#nav-container {
+  background-color: #d59844;
+  height: 85px;
+}
+
+.jumbotron {
+  padding-top: 100px;
+  padding-bottom: 10px;
+  margin-top: -30px;
+  text-align: center;
+  width: 100%;
+}
+
+#footer {
+  margin-top: -30px;
+  width: 100%;
+  height: 10em;
+  background-color: #d59844;
+}
+
+#filler {
+  height: 85px;
+}
+
+#profile-pic {
+  height: 15em;
+  width: 15em;
+  border-radius: 10px;
+
+}
+
+.badge-img {
+  height:4em;
+  width:5em;
+  display: inline-block;
+}
+
+#hours-container {
+  text-align: center;
+  height:50vh;
+}
+
+#photos-container {
+  text-align: center;
+  height:50vh;
+}
+
+.edit_symbol {
+    color: green;
+    font-size: 45px;
+}
+
+.edit_symbol a {
+    color: inherit;
+}
+
+.edit_symbol a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.photo_thumbnail {
+    height: 100px;
+    width: 75px;
+}

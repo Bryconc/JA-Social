@@ -1,0 +1,31 @@
+{% extends 'base_html.html' %}
+{% load static  %}
+{% block title %}Photo Gallery{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'ja_social/css/photo-gallery-style.css'%}">
+{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Image of the Week</h1>
+    <div class="row">
+      <div class="col-sm-12 fill">
+        <img id="feature-image" src="{% static 'ja_social/img/elementary-featured.jpg'%}" />
+      </div>
+    </div>
+    <h3>This is Jimmy, one of our elementary students who is very excited about taking charge of his future!</h3>
+  </div>
+  <div class="container" class="row">
+    <h1>Community Photos</h1>
+    <div class="row">
+        {% for photo in object_list %}
+        <div class="col-xs-6 col-md-3">
+          <a href="#" class="thumbnail">
+            <img src="{{ photo.photo.url }}" />
+          </a>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base_html.html' %}
+
+{% load static %}
+
+{% block title %}
+Photo Upload
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'ja_social/css/photo-upload-style.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="photo_container container">
+    <h1>Upload Photo</h1>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

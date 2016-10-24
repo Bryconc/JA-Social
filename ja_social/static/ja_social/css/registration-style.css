@@ -1,0 +1,17 @@
+.jumbotron {
+  padding-top: 100px;
+  margin-top: -30px;
+  text-align: center;
+  width: 100%;
+}
+
+#footer {
+  margin-top: -30px;
+  width: 100%;
+  height: 10em;
+  background-color: #d59844;
+}
+
+.error_msg {
+    color: red;
+}

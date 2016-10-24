@@ -1,0 +1,40 @@
+{% extends 'base_html.html' %}
+{% load static  %}
+{% block title %}Register{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'ja_social/css/registration-style.css'%}">
+{% endblock %}
+{% block content %}
+<div class="row">
+   <div class="col-sm-8 col-sm-offset-2">
+      <div class="jumbotron">
+         <h1 id="featured-title">Registration</h1>
+         <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+               <form action="" method="post">
+                  {% csrf_token %}
+                  <table>
+
+                     {% for field in form %}
+                     <tr>
+                        <td>
+                           {{ field.label_tag }}
+                        </td>
+                        <td>
+                           {{ field }}
+                        </td>
+                         <td class="error_msg">
+                             {{field.errors}}
+                         </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  <input type="submit" value="Register">
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+{% endblock %}

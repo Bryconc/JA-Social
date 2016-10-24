@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %} | Junior Achievement of the Triad</title>
+    {% block stylesheets %}{% endblock %}
+    <meta charset="UTF-8">
+
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{% static 'ja_social/css/home-style.css'%}">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Datatables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <script src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <!-- fontawesome -->
+  <script src="https://use.fontawesome.com/ed51a65b15.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid" id="nav-container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/social">
+          <img alt="logo" src="{% static 'ja_social/img/ja-logo-sticky.png'%}">
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              {% if user.is_authenticated %}
+                {% ifequal user.profile.profile_pic None %}
+                    <img id="avatar" src="{% static 'ja_social/img/avatar.png'%}"/>
+                {% else %}
+                    <img id="avatar" src="{{ user.profile.profile_pic.url }}"/>
+                {% endifequal %}
+              {% else %}
+                <img id="avatar" src="{% static 'ja_social/img/avatar.png'%}"/>
+              {% endif %}
+              <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'ja_social:user_view' user.pk %}">Profile: {{ user.first_name }}  {{ user.last_name }}</a></li>
+                <li><a href="{% url 'ja_social:user_update' user.pk %}">Edit Profile</a></li>
+                <li><a href="{% url 'ja_social:logout_page' %}">Log Out</a></li>
+              {% else %}
+                  <li><a href="{% url 'ja_social:login_page'%}">Login</a></li>
+                  <li><a href="{% url 'ja_social:account_registration'%}">Register</a></li>
+              {% endif %}
+          </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <div id="filler">
+    <!-- empty div the same height as the nav bar -->
+  </div>
+    <div id="content">
+        {% block content %} {% endblock %}
+    </div>
+  <div id="footer">
+    <div id="links" class="row">
+      <div class="col-sm-4 text-center">
+        <h3>Quick Links</h3>
+        <p>
+          <a href="https://triadja.org/invest/">Invest</a>
+        </p>
+        <p>
+          <a href="https://triadja.org/classroom-volunteers/">Volunteer</a>
+        </p>
+        <p>
+          <a href="https://triadja.org/contact/">Contact</a>
+        </p>
+        <p>
+          <a href="https://triadja.org/">triadja.org</a>
+        </p>
+      </div>
+      <div id="social-icons" class="col-sm-4">
+        <a class="btn btn-social-icon btn-facebook icon" href="https://www.facebook.com/TriadJuniorAchievement">
+            <span class="fa fa-facebook"></span>
+        </a>
+        <a class="btn btn-social-icon btn-linkedin icon" href="https://www.linkedin.com/company/triadja">
+            <span class="fa fa-linkedin"></span>
+        </a>
+        <a class="btn btn-social-icon btn-instagram icon" href="https://www.instagram.com/Triad_JA/">
+            <span class="fa fa-instagram"></span>
+        </a>
+        <a class="btn btn-social-icon btn-twitter icon" href="https://twitter.com/Triad_JA">
+            <span class="fa fa-twitter"></span>
+        </a>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h3>Contact</h3>
+        <p>Junior Achievement of the Triad</p>
+        <p>3220 Northline Ave.</p>
+        <p>Greensboro NC 27408</p>
+        <p>Email: info@triadja.org</p>
+        <p>336-299-4339</p>
+      </div>
+    </div>
+    <p><small>© 2016 Junior Achievement of the Triad. All rights reserved.</small></p>
+  </div>
+</body>
+</html>
+

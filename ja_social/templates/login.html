@@ -1,0 +1,39 @@
+{% extends 'base_html.html' %}
+{% load static  %}
+{% block title %}
+Login
+{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'ja_social/css/login-style.css'%}">
+{% endblock %}
+{% block content %}
+<div class="row">
+   <div class="col-sm-8 col-sm-offset-2">
+      <div class="jumbotron">
+         <!-- Login adapted from https://codepen.io/anon/pen/qagbKb (codepen is MIT license) -->
+         <div class="wrapper">
+
+            {% if form.errors %}
+            <p class="error">* Invalid username/password. Please try again. *</p>
+            {% endif %}
+            <form method="post" action="{% url 'ja_social:login_page' %}" id="loginForm" class="form-signin">
+               {% csrf_token %}
+                <h2 id="loginHeader">Login Form</h2>
+               <table>
+                  <tr>
+                     <td>{{ form.username.label_tag }}</td>
+                     <td>{{ form.username }}</td>
+                  </tr>
+                  <tr>
+                     <td>{{ form.password.label_tag }}</td>
+                     <td>{{ form.password }}</td>
+                  </tr>
+               </table>
+               <input id="submit-button" class="btn btn-lg btn-primary btn-block" type="submit" value="Login" />
+               <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

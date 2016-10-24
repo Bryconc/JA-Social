@@ -1,0 +1,59 @@
+{% extends 'base_html.html' %}
+{% load static  %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 id="featured-title">Featured Volunteer</h1>
+    <div class="row">
+      <div class="col-sm-12">
+        <img id="featured-volunteer" src="{% static 'ja_social/img/volunteer.jpg' %}"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>"Voluteering my time has been one of the most rewarding experiences of my life."</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>-Joe Nobody</h3>
+      </div>
+    </div>
+  </div>
+<div class="row">
+    <a href="https://triadja.org/classroom-volunteers/">
+        <div id="volunteer-square" class="col-sm-6 text-center">
+        <img src="{% static 'ja_social/img/volunteer-featured.png'%}"  />
+        <h1 id="vol-message">Join the Action</h1>
+        </div>
+    </a>
+    <div class="col-sm-6 text-center">
+        {% for photo in photos %}
+        <div class="col-xs-6 col-md-3 gal-square">
+          <a href="{% url 'ja_social:photo_gallery' %}" class="thumbnail">
+            <img src="{{ photo.photo.url }}" />
+          </a>
+        </div>
+        {% endfor %}
+        <h1 id="gal-message">Visit the Gallery</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <!-- SnapWidget -->
+      <script src="https://snapwidget.com/js/snapwidget.js"></script>
+      <iframe src="https://snapwidget.com/embed/274876" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
+    </div>
+
+      <div class="col-sm-6 text-center">
+      <!--
+      found a widget generated from Twitter directly
+      -->
+        <h3>Tweet with #TriadJA for your tweets to show up here!</h3>
+        <a class="twitter-timeline"  href="https://twitter.com/hashtag/triadja" data-widget-id="790091606594650112">#triadja Tweets</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+  </div>
+{% endblock %}

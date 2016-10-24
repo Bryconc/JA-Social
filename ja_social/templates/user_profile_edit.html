@@ -1,0 +1,103 @@
+{% extends 'base_html.html' %}
+{% load static  %}
+{% block title %}Update {{ object.user.first_name }}  {{ object.user.last_name }}'s Profile{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'ja_social/css/profile-style.css'%}">
+{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-2">
+            {% ifequal object.profile_pic None %}
+                <img id="profile-pic" src="{% static 'ja_social/img/avatar.png'%}">
+            {% else %}
+                <img id="profile-pic" src="{{ object.profile_pic.url }}"/>
+            {% endifequal %}
+      </div>
+      <div class="col-sm-4">
+            <h1>{{ object.user.first_name }}  {{ object.user.last_name }}</h1>
+            <div class="fieldWrapper">
+                <form action="" method="POST">{% csrf_token %}
+    {{ form.company.errors }}
+    {{ form.company.label_tag }}
+    {{ form.company }}
+                    <input type="submit" value="Update" />
+                    </form>
+</div>
+            <p>Date Joined: {{ object.user.date_joined | date }}</p>
+      </div>
+      <div class="col-sm-2">
+          <div class="row">
+              {% if hours_total.hours__sum >= 100 %}
+                <img class="badge-img" src="{% static 'ja_social/img/100hours.png'%}"/>
+              {% elif hours_total.hours__sum >= 25 %}
+                <img class="badge-img" src="{% static 'ja_social/img/25hours.png'%}"/>
+              {% elif hours_total.hours__sum >= 10 %}
+                <img class="badge-img" src="{% static 'ja_social/img/10hours.png'%}"/>
+              {% endif %}
+              {% if object.profile.featured %}
+                <img class="badge-img" src="{% static 'ja_social/img/featured-volunteer.png'%}"/>
+              {% endif %}
+          </div>
+          <div class="row">
+              <h1>Total hours: {{hours_total.hours__sum}}</h1>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function(){
+        $('#hours-table').DataTable();
+    });
+  </script>
+<div id="hours-container" class="row">
+    <h1>Hours <span class="edit_symbol"><a href="{% url 'ja_social:volunteer_record_log'%}">+</a></span></h1>
+    <div id="hours-table-holder" class="col-sm-4 col-sm-offset-4">
+      <table id="hours-table" class="display" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Program</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+          {% for o in hours %}
+            {% if o.user_profile == object %}
+                {% if o.verified is True %}
+                <tr>
+                    <td>
+                        {{ o.JA_program }}
+                    </td>
+                    <td>
+                        {{ o.hours }}
+                    </td>
+                </tr>
+          {% endif %}
+            {% endif %}
+          {% endfor %}
+      </table>
+    </div>
+  </div>
+
+<hr>
+
+
+  <div id="photos-container" class="row">
+    <h1>Photos<span class="edit_symbol"><a href="{% url 'ja_social:photo_upload'%}"> + </a></span></h1>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+          <div class="row">
+          {% for photo in photos %}
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img class="photo_thumbnail" src="{{ photo.photo.url }}">
+                </a>
+                </div>
+              {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
